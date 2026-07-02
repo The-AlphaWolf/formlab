@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORM LAB — Reformer Pilates &amp; Strength Studio, Bengaluru</title>
+<meta name="description" content="FORM LAB is a reformer pilates and strength studio in Indiranagar, Bengaluru. Precision training. No noise.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ————————————————————————————— FORM LAB — design system ——— */
+:root{
+  --bone:#EAE6DD;
+  --bone-2:#E2DDD2;
+  --ink:#161512;
+  --ink-soft:rgba(22,21,18,.62);
+  --line:rgba(22,21,18,.18);
+  --line-strong:rgba(22,21,18,.55);
+  --signal:#C93E14;
+  --bone-on-ink:rgba(234,230,221,.92);
+  --line-on-ink:rgba(234,230,221,.18);
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Archivo',Helvetica,Arial,sans-serif;
+  --mono:'Space Mono',monospace;
+  --pad:clamp(20px,4vw,64px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bone);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;filter:grayscale(1) contrast(1.06)}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--signal);color:var(--bone)}
+
+/* type utilities */
+.label{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.label--dim{color:var(--ink-soft)}
+.sig{color:var(--signal)}
+.serif-i{font-family:var(--serif);font-style:italic;font-weight:300}
+
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.6,.2,1),transform .9s cubic-bezier(.2,.6,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}
+
+/* ————————————————————————————— header ——— */
+header{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  padding:0 var(--pad);height:58px;
+  background:color-mix(in srgb,var(--bone) 88%,transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.wordmark{font-family:var(--sans);font-weight:600;letter-spacing:.02em;font-size:15px;white-space:nowrap}
+.wordmark sup{font-size:8px;vertical-align:super}
+nav{display:flex;gap:clamp(14px,2.4vw,34px);justify-self:center}
+nav a{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;position:relative;padding:4px 0}
+nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--signal);transition:width .3s}
+nav a:hover::after{width:100%}
+.btn{
+  display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--ink);padding:11px 22px;border-radius:999px;
+  transition:background .25s,color .25s,border-color .25s;
+  background:transparent;cursor:pointer;color:inherit;
+}
+.btn:hover{background:var(--ink);color:var(--bone)}
+.btn--fill{background:var(--ink);color:var(--bone)}
+.btn--fill:hover{background:var(--signal);border-color:var(--signal);color:var(--bone)}
+header .btn{justify-self:end;padding:8px 18px}
+@media(max-width:860px){nav{display:none}header{grid-template-columns:1fr auto}}
+
+/* ————————————————————————————— section chrome ——— */
+section{position:relative}
+.sec-head{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:18px var(--pad);border-top:1px solid var(--line-strong);
+}
+.sec-head .label b{font-weight:700}
+
+/* ————————————————————————————— hero ——— */
+.hero{padding-top:58px;border-bottom:1px solid var(--line-strong)}
+.hero-meta{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;
+  padding:14px var(--pad);border-bottom:1px solid var(--line);
+}
+.hero-meta span:nth-child(2){text-align:center}
+.hero-meta span:nth-child(3){text-align:right}
+.hero-title{
+  padding:clamp(18px,3vw,40px) var(--pad) 0;
+  font-family:var(--sans);font-weight:600;
+  font-size:clamp(64px,15.5vw,240px);
+  line-height:.86;letter-spacing:-.045em;text-transform:uppercase;
+  display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;
+}
+.hero-title .dot{color:var(--signal)}
+.hero-split{
+  display:grid;grid-template-columns:5fr 7fr;
+  border-top:1px solid var(--line);margin-top:clamp(20px,3vw,44px);
+}
+.hero-copy{
+  padding:clamp(28px,4vw,56px) var(--pad);
+  border-right:1px solid var(--line);
+  display:flex;flex-direction:column;justify-content:space-between;gap:44px;
+}
+.hero-copy h1{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(26px,2.6vw,40px);line-height:1.22;letter-spacing:-.01em;
+  max-width:17em;
+}
+.hero-copy h1 em{font-style:italic;font-weight:400}
+.hero-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.hero-foot{display:flex;gap:28px}
+.hero-img{position:relative;overflow:hidden;min-height:420px}
+.hero-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.hero-img .frame-tag{
+  position:absolute;left:18px;bottom:16px;color:var(--bone-on-ink);
+  mix-blend-mode:normal;z-index:2;
+}
+@media(max-width:860px){
+  .hero-split{grid-template-columns:1fr}
+  .hero-copy{border-right:none;border-bottom:1px solid var(--line)}
+  .hero-img{min-height:320px}
+}
+
+/* ticker */
+.ticker{
+  border-top:1px solid var(--line-strong);
+  overflow:hidden;white-space:nowrap;padding:13px 0;
+  background:var(--ink);color:var(--bone-on-ink);
+}
+.ticker-track{display:inline-block;animation:tick 30s linear infinite}
+.ticker span{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;padding:0 26px}
+.ticker .tick-dot{color:var(--signal);padding:0}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ————————————————————————————— manifesto ——— */
+.manifesto{padding-bottom:clamp(60px,8vw,120px)}
+.manifesto-grid{
+  display:grid;grid-template-columns:3fr 9fr;gap:var(--pad);
+  padding:clamp(40px,6vw,90px) var(--pad) 0;
+}
+.manifesto-rail{display:flex;flex-direction:column;gap:14px}
+.manifesto-rail .rule{width:34px;height:1px;background:var(--signal)}
+.manifesto p.big{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(28px,4.2vw,62px);line-height:1.14;letter-spacing:-.015em;
+  max-width:15em;
+}
+.manifesto p.big em{font-style:italic;font-weight:400}
+.manifesto p.big .strike{position:relative;white-space:nowrap}
+.manifesto p.big .strike::after{content:"";position:absolute;left:-2%;right:-2%;top:54%;height:2px;background:var(--signal)}
+.principles{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  margin-top:clamp(48px,6vw,96px);
+  border-top:1px solid var(--line);
+}
+.principle{padding:28px var(--pad) 0 var(--pad);border-right:1px solid var(--line)}
+.principle:last-child{border-right:none}
+.principle .num{font-family:var(--mono);font-size:11px;color:var(--signal);display:block;margin-bottom:18px}
+.principle h3{font-family:var(--serif);font-weight:400;font-size:22px;margin-bottom:10px;letter-spacing:-.01em}
+.principle p{color:var(--ink-soft);font-size:14.5px;max-width:30em}
+@media(max-width:860px){
+  .manifesto-grid{grid-template-columns:1fr}
+  .principles{grid-template-columns:1fr}
+  .principle{border-right:none;border-bottom:1px solid var(--line);padding-bottom:28px}
+  .principle:last-child{border-bottom:none}
+}
+
+/* ————————————————————————————— classes: editorial index ——— */
+.classes{border-top:1px solid var(--line-strong)}
+.class-row{
+  display:grid;grid-template-columns:70px 4fr 3fr 2fr 2fr 120px;
+  align-items:center;gap:18px;
+  padding:26px var(--pad);
+  border-bottom:1px solid var(--line);
+  position:relative;cursor:pointer;
+  transition:background .3s,color .3s;
+}
+.class-row:hover{background:var(--ink);color:var(--bone)}
+.class-row:hover .label--dim{color:rgba(234,230,221,.6)}
+.class-row .c-num{font-family:var(--mono);font-size:11px;color:var(--signal)}
+.class-row h3{
+  font-family:var(--sans);font-weight:600;text-transform:uppercase;letter-spacing:-.01em;
+  font-size:clamp(20px,2.4vw,32px);line-height:1;
+}
+.class-row .c-desc{font-size:13.5px;color:var(--ink-soft);max-width:26em;transition:color .3s}
+.class-row:hover .c-desc{color:rgba(234,230,221,.7)}
+.class-row .c-thumb{
+  position:absolute;right:calc(var(--pad) + 130px);top:50%;
+  width:190px;height:120px;object-fit:cover;
+  transform:translateY(-50%) scale(.92) rotate(-2deg);
+  opacity:0;transition:opacity .35s,transform .35s;
+  pointer-events:none;z-index:2;box-shadow:0 18px 40px rgba(0,0,0,.35);
+}
+.class-row:hover .c-thumb{opacity:1;transform:translateY(-50%) scale(1) rotate(-2deg)}
+.class-row .c-go{
+  justify-self:end;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  display:flex;align-items:center;gap:8px;
+}
+.class-row .c-go svg{transition:transform .3s}
+.class-row:hover .c-go svg{transform:translateX(6px)}
+.class-row:hover .c-go{color:var(--signal)}
+@media(max-width:1020px){
+  .class-row{grid-template-columns:44px 1fr auto}
+  .class-row .c-desc,.class-row .c-meta1,.class-row .c-meta2{display:none}
+  .class-row .c-thumb{display:none}
+}
+
+/* ————————————————————————————— transformation: inverted timeline ——— */
+.transform{background:var(--ink);color:var(--bone-on-ink)}
+.transform .sec-head{border-top-color:var(--line-on-ink)}
+.transform .label--dim{color:rgba(234,230,221,.5)}
+.transform-intro{
+  padding:clamp(44px,6vw,90px) var(--pad) clamp(36px,5vw,70px);
+  display:grid;grid-template-columns:8fr 4fr;gap:var(--pad);align-items:end;
+}
+.transform-intro h2{
+  font-family:var(--serif);font-weight:300;color:var(--bone);
+  font-size:clamp(34px,5vw,72px);line-height:1.06;letter-spacing:-.015em;max-width:11em;
+}
+.transform-intro h2 em{font-style:italic;color:var(--signal)}
+.transform-intro p{color:rgba(234,230,221,.62);font-size:14.5px;max-width:26em}
+.phases{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-on-ink)}
+.phase{
+  padding:30px 26px 44px;border-right:1px solid var(--line-on-ink);
+  display:flex;flex-direction:column;gap:16px;position:relative;
+}
+.phase:last-child{border-right:none}
+.phase .ph-week{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--signal)}
+.phase .ph-big{
+  font-family:var(--sans);font-weight:600;font-size:clamp(52px,6vw,96px);
+  line-height:.9;letter-spacing:-.04em;color:var(--bone);
+}
+.phase h3{font-family:var(--serif);font-weight:400;font-size:19px;color:var(--bone)}
+.phase p{font-size:13.5px;color:rgba(234,230,221,.6)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-on-ink)}
+.stat{padding:34px 26px;border-right:1px solid var(--line-on-ink);display:flex;flex-direction:column;gap:6px}
+.stat:last-child{border-right:none}
+.stat b{font-family:var(--serif);font-weight:300;font-size:clamp(40px,4.6vw,68px);line-height:1;color:var(--bone)}
+.stat b i{font-style:italic;color:var(--signal)}
+.stat span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(234,230,221,.55)}
+@media(max-width:1020px){.phases{grid-template-columns:1fr 1fr}.phase{border-bottom:1px solid var(--line-on-ink)}}
+@media(max-width:640px){
+  .transform-intro{grid-template-columns:1fr}
+  .phases{grid-template-columns:1fr}.phase{border-right:none}
+  .stats{grid-template-columns:1fr}.stat{border-right:none;border-bottom:1px solid var(--line-on-ink)}
+}
+
+/* ————————————————————————————— trainers: staggered portraits ——— */
+.trainers{border-top:1px solid var(--line-strong)}
+.trainer-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,48px);
+  padding:clamp(40px,5vw,80px) var(--pad) clamp(60px,7vw,110px);
+  align-items:start;
+}
+.trainer:nth-child(2){margin-top:clamp(40px,6vw,110px)}
+.trainer:nth-child(3){margin-top:clamp(20px,3vw,55px)}
+.trainer figure{position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--bone-2)}
+.trainer figure img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.6,.2,1)}
+.trainer:hover figure img{transform:scale(1.045)}
+.trainer figcaption{
+  position:absolute;top:14px;left:14px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--bone);padding:5px 10px;
+}
+.trainer .t-info{padding-top:18px;border-top:1px solid var(--line);margin-top:18px}
+.trainer h3{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em}
+.trainer .t-role{color:var(--signal);margin:4px 0 14px}
+.trainer ul{list-style:none}
+.trainer li{
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ink-soft);
+  padding:7px 0;border-bottom:1px solid var(--line);
+}
+.trainer li:last-child{border-bottom:none}
+@media(max-width:860px){
+  .trainer-grid{grid-template-columns:1fr}
+  .trainer:nth-child(2),.trainer:nth-child(3){margin-top:0}
+}
+
+/* ————————————————————————————— studio: image + spec sheet ——— */
+.studio{border-top:1px solid var(--line-strong)}
+.studio-grid{display:grid;grid-template-columns:7fr 5fr;min-height:640px}
+.studio-img{position:relative;overflow:hidden;border-right:1px solid var(--line-strong)}
+.studio-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.studio-img .frame-tag{position:absolute;left:18px;bottom:16px;color:var(--bone-on-ink);z-index:2}
+.studio-spec{padding:clamp(36px,4vw,64px) var(--pad);display:flex;flex-direction:column}
+.studio-spec h2{
+  font-family:var(--serif);font-weight:300;font-size:clamp(28px,3vw,44px);
+  line-height:1.14;letter-spacing:-.01em;margin:18px 0 34px;max-width:13em;
+}
+.studio-spec h2 em{font-style:italic}
+.spec-list{list-style:none;border-top:1px solid var(--line-strong)}
+.spec-list li{
+  display:grid;grid-template-columns:56px 1fr auto;gap:14px;align-items:baseline;
+  padding:15px 0;border-bottom:1px solid var(--line);
+}
+.spec-list .s-idx{font-family:var(--mono);font-size:11px;color:var(--signal)}
+.spec-list .s-name{font-size:14.5px;font-weight:500}
+.spec-list .s-val{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ink-soft);text-align:right}
+.studio-note{margin-top:auto;padding-top:34px;color:var(--ink-soft);font-size:13.5px;max-width:30em}
+@media(max-width:900px){
+  .studio-grid{grid-template-columns:1fr}
+  .studio-img{min-height:380px;border-right:none;border-bottom:1px solid var(--line-strong)}
+}
+
+/* ————————————————————————————— pricing: ledger ——— */
+.pricing{border-top:1px solid var(--line-strong)}
+.price-cols{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:0}
+.price-col{
+  padding:clamp(30px,3.6vw,52px) var(--pad) clamp(36px,4vw,56px);
+  border-right:1px solid var(--line);
+  display:flex;flex-direction:column;gap:0;position:relative;
+}
+.price-col:last-child{border-right:none}
+.price-col .p-tag{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}
+.price-col .p-flag{
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--bone);background:var(--signal);padding:4px 10px;border-radius:999px;
+}
+.price-col h3{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em}
+.price-col .p-amount{
+  font-family:var(--sans);font-weight:600;letter-spacing:-.03em;
+  font-size:clamp(44px,4.4vw,72px);line-height:1;margin:22px 0 4px;
+}
+.price-col .p-per{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.price-col ul{list-style:none;margin:32px 0 40px;border-top:1px solid var(--line)}
+.price-col li{
+  font-size:13.5px;padding:11px 0 11px 22px;border-bottom:1px solid var(--line);position:relative;color:var(--ink-soft);
+}
+.price-col li::before{content:"—";position:absolute;left:0;color:var(--signal);font-family:var(--mono);font-size:11px}
+.price-col .btn{margin-top:auto;text-align:center}
+.price-col--hot{background:var(--bone-2)}
+.price-col--hot::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--signal)}
+.price-note{
+  padding:16px var(--pad);border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+}
+@media(max-width:900px){
+  .price-cols{grid-template-columns:1fr}
+  .price-col{border-right:none;border-bottom:1px solid var(--line)}
+}
+
+/* ————————————————————————————— testimonials: pull quote ——— */
+.voices{border-top:1px solid var(--line-strong);padding-bottom:clamp(60px,8vw,120px)}
+.pull{
+  padding:clamp(50px,7vw,110px) var(--pad) clamp(40px,5vw,80px);
+  max-width:1180px;
+}
+.pull blockquote{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(30px,4.6vw,68px);line-height:1.1;letter-spacing:-.015em;text-indent:1.6em;
+}
+.pull blockquote em{font-style:italic;color:var(--signal)}
+.pull cite{
+  display:block;margin-top:30px;font-style:normal;
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+}
+.voice-row{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--line);
+}
+.voice{padding:30px var(--pad) 0;border-right:1px solid var(--line)}
+.voice:last-child{border-right:none}
+.voice p{font-size:14.5px;color:var(--ink-soft);max-width:26em}
+.voice p::before{content:"“";font-family:var(--serif);font-size:28px;color:var(--signal);display:block;line-height:.6;margin-bottom:10px}
+.voice .v-name{margin-top:16px;display:block}
+@media(max-width:860px){
+  .voice-row{grid-template-columns:1fr}
+  .voice{border-right:none;border-bottom:1px solid var(--line);padding-bottom:28px}
+  .voice:last-child{border-bottom:none}
+}
+
+/* ————————————————————————————— CTA + footer ——— */
+.cta{background:var(--ink);color:var(--bone-on-ink);border-top:1px solid var(--line-strong)}
+.cta-inner{padding:clamp(70px,10vw,150px) var(--pad) clamp(50px,6vw,90px);text-align:left}
+.cta-inner .label{color:rgba(234,230,221,.5)}
+.cta h2{
+  font-family:var(--sans);font-weight:600;text-transform:uppercase;color:var(--bone);
+  font-size:clamp(52px,11vw,170px);line-height:.9;letter-spacing:-.04em;margin:26px 0 40px;
+}
+.cta h2 .serif-i{font-family:var(--serif);font-weight:300;text-transform:none;letter-spacing:-.02em}
+.cta h2 .dot{color:var(--signal)}
+.cta .btn{border-color:var(--bone-on-ink);color:var(--bone)}
+.cta .btn:hover{background:var(--bone);color:var(--ink)}
+.cta .btn--fill{background:var(--signal);border-color:var(--signal);color:var(--bone)}
+.cta .btn--fill:hover{background:var(--bone);border-color:var(--bone);color:var(--ink)}
+.cta-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.cta-actions .label{margin-left:10px}
+footer{background:var(--ink);color:rgba(234,230,221,.6)}
+.foot-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:34px;
+  padding:44px var(--pad);border-top:1px solid var(--line-on-ink);
+}
+.foot-grid h4{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);margin-bottom:16px}
+.foot-grid ul{list-style:none}
+.foot-grid li{padding:4px 0;font-size:13.5px}
+.foot-grid a:hover{color:var(--bone)}
+.foot-brand p{font-size:13.5px;max-width:22em}
+.foot-mark{
+  padding:0 var(--pad);
+  font-family:var(--sans);font-weight:600;text-transform:uppercase;
+  font-size:clamp(60px,14.5vw,230px);line-height:.78;letter-spacing:-.045em;
+  color:rgba(234,230,221,.1);
+  overflow:hidden;white-space:nowrap;user-select:none;
+  padding-bottom:0;transform:translateY(.12em);
+}
+.foot-legal{
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:16px var(--pad);border-top:1px solid var(--line-on-ink);
+  font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(234,230,221,.4);
+}
+@media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="wordmark" href="#top">FORM LAB<sup>®</sup></a>
+  <nav>
+    <a href="#manifesto">Manifesto</a>
+    <a href="#classes">Classes</a>
+    <a href="#method">Method</a>
+    <a href="#coaches">Coaches</a>
+    <a href="#studio">Studio</a>
+    <a href="#pricing">Membership</a>
+  </nav>
+  <a class="btn btn--fill" href="#book">Book a class</a>
+</header>
+
+<!-- ————————————————— HERO ————————————————— -->
+<section class="hero" id="top">
+  <div class="hero-meta label label--dim">
+    <span>EST. 2021 — BENGALURU</span>
+    <span>REFORMER PILATES / STRENGTH</span>
+    <span>12°58′N&nbsp;&nbsp;77°38′E</span>
+  </div>
+
+  <div class="hero-title rv in">
+    <span>Form&nbsp;Lab<span class="dot">.</span></span>
+  </div>
+
+  <div class="hero-split">
+    <div class="hero-copy">
+      <h1 class="rv in rv-d1">The body is an instrument. We tune it — with <em>tension, precision,</em> and forty-five honest minutes at a time.</h1>
+      <div>
+        <div class="hero-cta rv in rv-d2">
+          <a class="btn btn--fill" href="#pricing">Start your intro week</a>
+          <a class="btn" href="#classes">See the classes</a>
+        </div>
+        <div class="hero-foot label label--dim" style="margin-top:34px">
+          <span>08 BODIES / CLASS</span>
+          <span>ALLEGRO 2 REFORMERS</span>
+          <span>NO MIRRORS. NO NOISE.</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-img rv in rv-d2">
+      <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=80&sat=-100" alt="Athlete mid-movement, monochrome">
+      <span class="frame-tag label">FIG. 01 — CONTROLLED ECCENTRIC, 4 SECONDS DOWN</span>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Reformer</span><span class="tick-dot">●</span><span>Strength</span><span class="tick-dot">●</span><span>Control</span><span class="tick-dot">●</span><span>Mobility</span><span class="tick-dot">●</span><span>Breath</span><span class="tick-dot">●</span><span>Tension</span><span class="tick-dot">●</span>
+      <span>Reformer</span><span class="tick-dot">●</span><span>Strength</span><span class="tick-dot">●</span><span>Control</span><span class="tick-dot">●</span><span>Mobility</span><span class="tick-dot">●</span><span>Breath</span><span class="tick-dot">●</span><span>Tension</span><span class="tick-dot">●</span>
+    </div>
+  </div>
+</section>
+
+<!-- ————————————————— MANIFESTO ————————————————— -->
+<section class="manifesto" id="manifesto">
+  <div class="sec-head">
+    <span class="label"><b class="sig">01</b> — Manifesto</span>
+    <span class="label label--dim">WHAT WE BELIEVE</span>
+  </div>
+  <div class="manifesto-grid">
+    <div class="manifesto-rail rv">
+      <span class="label label--dim">A POSITION,<br>NOT A VIBE</span>
+      <span class="rule"></span>
+    </div>
+    <p class="big rv rv-d1">
+      Fitness sold you <span class="strike">more</span>. More reps, more sweat, more mirrors. We sell <em>less, done properly</em> — eight bodies, one coach, and the kind of strength that shows up when you carry, climb, and stand.
+    </p>
+  </div>
+  <div class="principles">
+    <div class="principle rv">
+      <span class="num">P.01</span>
+      <h3>Load is a language</h3>
+      <p>Springs, straps and steel speak plainly: you either control the movement or you don't. We teach you to answer.</p>
+    </div>
+    <div class="principle rv rv-d1">
+      <span class="num">P.02</span>
+      <h3>Small rooms, sharp eyes</h3>
+      <p>Never more than eight to a class. Your coach sees every rep — which means every rep counts twice.</p>
+    </div>
+    <div class="principle rv rv-d2">
+      <span class="num">P.03</span>
+      <h3>Progress is measured</h3>
+      <p>We test, we log, we retest. Your file at week twelve should embarrass your file at week one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ————————————————— CLASSES: INDEX ————————————————— -->
+<section class="classes" id="classes">
+  <div class="sec-head">
+    <span class="label"><b class="sig">02</b> — The Index</span>
+    <span class="label label--dim">FIVE FORMATS. ZERO FILLER.</span>
+  </div>
+
+  <a class="class-row" href="#book">
+    <span class="c-num">C.01</span>
+    <h3>Reformer Foundations</h3>
+    <span class="c-desc">Footwork, carriage control, breath mechanics. Where every member starts — no exceptions.</span>
+    <span class="c-meta1 label label--dim">50 MIN</span>
+    <span class="c-meta2 label label--dim">TEMPO — LOW</span>
+    <img class="c-thumb" src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=70&sat=-100" alt="">
+    <span class="c-go">Book <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M0 5h14M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.2"/></svg></span>
+  </a>
+
+  <a class="class-row" href="#book">
+    <span class="c-num">C.02</span>
+    <h3>Power Reformer</h3>
+    <span class="c-desc">Heavier springs, longer levers, shorter rests. The reformer, weaponised for strength.</span>
+    <span class="c-meta1 label label--dim">50 MIN</span>
+    <span class="c-meta2 label label--dim">TEMPO — HIGH</span>
+    <img class="c-thumb" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=70&sat=-100" alt="">
+    <span class="c-go">Book <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M0 5h14M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.2"/></svg></span>
+  </a>
+
+  <a class="class-row" href="#book">
+    <span class="c-num">C.03</span>
+    <h3>Strength Lab</h3>
+    <span class="c-desc">Barbell and kettlebell fundamentals, coached like a craft. Squat, hinge, press, carry.</span>
+    <span class="c-meta1 label label--dim">60 MIN</span>
+    <span class="c-meta2 label label--dim">LOAD — HEAVY</span>
+    <img class="c-thumb" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=70&sat=-100" alt="">
+    <span class="c-go">Book <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M0 5h14M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.2"/></svg></span>
+  </a>
+
+  <a class="class-row" href="#book">
+    <span class="c-num">C.04</span>
+    <h3>Mobility + Control</h3>
+    <span class="c-desc">End-range strength and articular work. The session your joints will thank you for at sixty.</span>
+    <span class="c-meta1 label label--dim">45 MIN</span>
+    <span class="c-meta2 label label--dim">TEMPO — SLOW</span>
+    <img class="c-thumb" src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&fit=crop&w=600&q=70&sat=-100" alt="">
+    <span class="c-go">Book <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M0 5h14M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.2"/></svg></span>
+  </a>
+
+  <a class="class-row" href="#book">
+    <span class="c-num">C.05</span>
+    <h3>Private / 1-on-1</h3>
+    <span class="c-desc">Full assessment, individual programming, one coach on one body. Rehab-friendly.</span>
+    <span class="c-meta1 label label--dim">55 MIN</span>
+    <span class="c-meta2 label label--dim">BY APPOINTMENT</span>
+    <img class="c-thumb" src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=600&q=70&sat=-100" alt="">
+    <span class="c-go">Enquire <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M0 5h14M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.2"/></svg></span>
+  </a>
+</section>
+
+<!-- ————————————————— TRANSFORMATION: THE METHOD ————————————————— -->
+<section class="transform" id="method">
+  <div class="sec-head">
+    <span class="label"><b class="sig">03</b> — The Method</span>
+    <span class="label label--dim">12 WEEKS, DOCUMENTED</span>
+  </div>
+  <div class="transform-intro">
+    <h2 class="rv">We don't promise a new you. We build a <em>stronger version</em> of this one.</h2>
+    <p class="rv rv-d1">Every member runs the same twelve-week arc: assess, build, load, retest. Nothing mystical — just progressive tension, applied consistently, measured honestly.</p>
+  </div>
+  <div class="phases">
+    <div class="phase rv">
+      <span class="ph-week">Weeks 01–03</span>
+      <span class="ph-big">A</span>
+      <h3>Assess &amp; align</h3>
+      <p>Movement screen, baseline strength tests, breath and bracing. We find the leaks before we add load.</p>
+    </div>
+    <div class="phase rv rv-d1">
+      <span class="ph-week">Weeks 04–06</span>
+      <span class="ph-big">B</span>
+      <h3>Build capacity</h3>
+      <p>Volume rises. Positions harden. The reformer teaches your nervous system what control feels like.</p>
+    </div>
+    <div class="phase rv rv-d2">
+      <span class="ph-week">Weeks 07–10</span>
+      <span class="ph-big">C</span>
+      <h3>Load with intent</h3>
+      <p>Heavier springs, heavier bars. Strength arrives quietly — stairs, luggage, posture, sleep.</p>
+    </div>
+    <div class="phase rv rv-d3">
+      <span class="ph-week">Weeks 11–12</span>
+      <span class="ph-big">D</span>
+      <h3>Retest &amp; prove</h3>
+      <p>Same tests, same conditions, new numbers. Your progress in ink, not in adjectives.</p>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat rv"><b>+31<i>%</i></b><span>Avg. strength gain, 12 weeks</span></div>
+    <div class="stat rv rv-d1"><b>92<i>%</i></b><span>Members who retest better</span></div>
+    <div class="stat rv rv-d2"><b>8<i>:</i>1</b><span>Max member-to-coach ratio</span></div>
+  </div>
+</section>
+
+<!-- ————————————————— TRAINERS ————————————————— -->
+<section class="trainers" id="coaches">
+  <div class="sec-head">
+    <span class="label"><b class="sig">04</b> — The Coaches</span>
+    <span class="label label--dim">CREDENTIALED. CURIOUS. PRESENT.</span>
+  </div>
+  <div class="trainer-grid">
+    <div class="trainer rv">
+      <figure>
+        <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=900&q=75&sat=-100" alt="Coach Meera D'Souza">
+        <figcaption>HEAD OF METHOD</figcaption>
+      </figure>
+      <div class="t-info">
+        <h3>Meera D'Souza</h3>
+        <span class="label t-role" style="display:block">Head Coach — Reformer</span>
+        <ul>
+          <li>BASI Pilates — Comprehensive, 2016</li>
+          <li>MSc Sports Biomechanics, Loughborough</li>
+          <li>9,000+ coached hours</li>
+        </ul>
+      </div>
+    </div>
+    <div class="trainer rv rv-d1">
+      <figure>
+        <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=900&q=75&sat=-100" alt="Coach Arjun Nair">
+        <figcaption>STRENGTH LEAD</figcaption>
+      </figure>
+      <div class="t-info">
+        <h3>Arjun Nair</h3>
+        <span class="label t-role" style="display:block">Lead Coach — Strength Lab</span>
+        <ul>
+          <li>NSCA CSCS, 2018</li>
+          <li>Former national-level rower</li>
+          <li>Specialist: hinge patterns, back rehab</li>
+        </ul>
+      </div>
+    </div>
+    <div class="trainer rv rv-d2">
+      <figure>
+        <img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fit=crop&w=900&q=75&sat=-100" alt="Coach Sana Kapoor">
+        <figcaption>MOBILITY LEAD</figcaption>
+      </figure>
+      <div class="t-info">
+        <h3>Sana Kapoor</h3>
+        <span class="label t-role" style="display:block">Coach — Mobility + Control</span>
+        <ul>
+          <li>FRC Mobility Specialist (FRCms)</li>
+          <li>Polestar Pilates — Rehab track</li>
+          <li>Ex-professional contemporary dancer</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ————————————————— STUDIO ————————————————— -->
+<section class="studio" id="studio">
+  <div class="sec-head">
+    <span class="label"><b class="sig">05</b> — The Room</span>
+    <span class="label label--dim">INDIRANAGAR, BENGALURU</span>
+  </div>
+  <div class="studio-grid">
+    <div class="studio-img rv">
+      <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1600&q=80&sat=-100" alt="FORM LAB studio floor, monochrome">
+      <span class="frame-tag label">FIG. 02 — THE FLOOR, 6:00 AM</span>
+    </div>
+    <div class="studio-spec">
+      <span class="label label--dim rv">SPECIFICATION SHEET</span>
+      <h2 class="rv rv-d1">2,400 square feet, engineered for <em>quiet effort</em>.</h2>
+      <ul class="spec-list rv rv-d2">
+        <li><span class="s-idx">S.01</span><span class="s-name">Balanced Body Allegro 2 reformers</span><span class="s-val">× 08</span></li>
+        <li><span class="s-idx">S.02</span><span class="s-name">Eleiko bars &amp; competition plates</span><span class="s-val">FULL RACKS × 04</span></li>
+        <li><span class="s-idx">S.03</span><span class="s-name">Cork acoustic flooring</span><span class="s-val">38 dB DAMPING</span></li>
+        <li><span class="s-idx">S.04</span><span class="s-name">Filtered air, constant climate</span><span class="s-val">21°C / MERV-13</span></li>
+        <li><span class="s-idx">S.05</span><span class="s-name">Rain showers, towel service</span><span class="s-val">INCLUDED</span></li>
+        <li><span class="s-idx">S.06</span><span class="s-name">Mirrors</span><span class="s-val">× 00 — DELIBERATE</span></li>
+      </ul>
+      <p class="studio-note rv rv-d3">No neon. No leaderboard screens. Daylight from the north, music you can think over, and equipment maintained like it matters — because it does.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ————————————————— PRICING ————————————————— -->
+<section class="pricing" id="pricing">
+  <div class="sec-head">
+    <span class="label"><b class="sig">06</b> — Membership</span>
+    <span class="label label--dim">NO LOCK-INS. NO JOINING FEES.</span>
+  </div>
+  <div class="price-cols">
+    <div class="price-col rv">
+      <div class="p-tag"><h3>Intro Week</h3><span class="label label--dim">M.01</span></div>
+      <div>
+        <div class="p-amount">₹1,900</div>
+        <span class="p-per">One week, unlimited</span>
+      </div>
+      <ul>
+        <li>Any class format, all week</li>
+        <li>Baseline movement assessment</li>
+        <li>Coach recommendation to start</li>
+      </ul>
+      <a class="btn" href="#book">Start here</a>
+    </div>
+    <div class="price-col price-col--hot rv rv-d1">
+      <div class="p-tag"><h3>Unlimited</h3><span class="p-flag">Most chosen</span></div>
+      <div>
+        <div class="p-amount">₹11,500</div>
+        <span class="p-per">Per month, rolling</span>
+      </div>
+      <ul>
+        <li>Unlimited reformer + strength classes</li>
+        <li>Quarterly retest &amp; progress file</li>
+        <li>Priority booking window</li>
+        <li>Towel service &amp; lockers</li>
+      </ul>
+      <a class="btn btn--fill" href="#book">Become a member</a>
+    </div>
+    <div class="price-col rv rv-d2">
+      <div class="p-tag"><h3>Private 10</h3><span class="label label--dim">M.03</span></div>
+      <div>
+        <div class="p-amount">₹32,000</div>
+        <span class="p-per">Ten 1-on-1 sessions</span>
+      </div>
+      <ul>
+        <li>Full assessment &amp; individual program</li>
+        <li>Flexible scheduling, 6-month validity</li>
+        <li>Rehab &amp; return-to-sport friendly</li>
+      </ul>
+      <a class="btn" href="#book">Enquire</a>
+    </div>
+  </div>
+  <div class="price-note">
+    <span class="label label--dim">PAUSE ANYTIME — 30 DAYS NOTICE TO CANCEL — GST INCLUDED</span>
+    <span class="label label--dim">CORPORATE &amp; DUO RATES ON REQUEST</span>
+  </div>
+</section>
+
+<!-- ————————————————— VOICES ————————————————— -->
+<section class="voices">
+  <div class="sec-head">
+    <span class="label"><b class="sig">07</b> — In Their Words</span>
+    <span class="label label--dim">UNSCRIPTED, LIGHTLY EDITED</span>
+  </div>
+  <div class="pull rv">
+    <blockquote>“I came for the aesthetic, honestly. I stayed because at 41 I deadlifted my <em>bodyweight</em> for the first time in my life.”</blockquote>
+    <cite>— Priya M., member since 2022 · Unlimited</cite>
+  </div>
+  <div class="voice-row">
+    <div class="voice rv">
+      <p>Eight people max means the coach caught my hip shift in week one. Three physios missed it in three years.</p>
+      <span class="v-name label label--dim">RAHUL T. — 14 MONTHS</span>
+    </div>
+    <div class="voice rv rv-d1">
+      <p>The retest file is addictive. I've never kept a fitness habit past February. This is year two.</p>
+      <span class="v-name label label--dim">ANANYA S. — 2 YEARS</span>
+    </div>
+    <div class="voice rv rv-d2">
+      <p>No mirrors sounded like a gimmick. Then I stopped watching myself and started feeling the work. Different sport.</p>
+      <span class="v-name label label--dim">DAVID K. — 9 MONTHS</span>
+    </div>
+  </div>
+</section>
+
+<!-- ————————————————— CTA ————————————————— -->
+<section class="cta" id="book">
+  <div class="cta-inner">
+    <span class="label">08 — THE ONLY STEP THAT MATTERS</span>
+    <h2 class="rv">Get in <span class="serif-i">form</span><span class="dot">.</span></h2>
+    <div class="cta-actions rv rv-d1">
+      <a class="btn btn--fill" href="mailto:hello@formlab.studio?subject=Intro%20Week">Book your intro week — ₹1,900</a>
+      <a class="btn" href="tel:+918041234567">Call the studio</a>
+      <span class="label">FIRST CLASS SCHEDULED WITHIN 48 HOURS</span>
+    </div>
+  </div>
+
+  <footer>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <h4>FORM LAB®</h4>
+        <p>A reformer pilates and strength studio. Eight bodies, one coach, and strength you can prove.</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li>734, 12th Main Road</li>
+          <li>Indiranagar, Bengaluru 560008</li>
+          <li><a href="#">Map &amp; directions ↗</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <ul>
+          <li>Mon–Fri — 06:00–21:00</li>
+          <li>Sat — 07:00–14:00</li>
+          <li>Sun — Closed. Rest is training.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="#">Instagram ↗</a></li>
+          <li><a href="#">WhatsApp ↗</a></li>
+          <li><a href="mailto:hello@formlab.studio">hello@formlab.studio</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-mark" aria-hidden="true">Form&nbsp;Lab®</div>
+    <div class="foot-legal">
+      <span>© 2026 FORM LAB STUDIOS PVT. LTD.</span>
+      <span>DESIGNED IN-HOUSE — SET IN FRAUNCES &amp; ARCHIVO</span>
+      <span>TERMS / PRIVACY</span>
+    </div>
+  </footer>
+</section>
+
+<script>
+// scroll reveal
+const io = new IntersectionObserver((entries)=>{
+  for(const e of entries){
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+  }
+},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv:not(.in)').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
